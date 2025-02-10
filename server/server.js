@@ -5,7 +5,7 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 app.use(cors())
 const mongoose=require("mongoose")
-mongoose.connect("mongodb+srv://jayaprakash:jayaprakash@assignment.qrx4h.mongodb.net/?retryWrites=true&w=majority&appName=Assignment").then(()=>{
+mongoose.connect("mongodb+srv://jayaprakash:jayaprakash@cluster0.pbojy.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0").then(()=>{
     console.log("mongodb connected");
   }).catch(()=>{
     console.log('failed');

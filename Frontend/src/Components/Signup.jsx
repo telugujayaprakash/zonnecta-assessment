@@ -7,11 +7,12 @@ import {useNavigate,Link} from "react-router-dom"
 export default function Login() {
   const [Email, setEmail] = useState("");
   const [Password, setPassword] = useState("");
+  const [Signup, setSignup] = useState("Signup");
   const navigate = useNavigate();
 
-  async function Signup(e){
+  async function handleSignup(e){
     e.preventDefault();
-
+    setSignup("Loading...")
     try{
 
         await axios.post("http://localhost:5000/Signup",{
@@ -40,7 +41,7 @@ export default function Login() {
 
   return (
     <div className="container">
-      <form onSubmit={Signup}>
+      <form onSubmit={handleSignup}>
         <input
           type="email"
           placeholder="Enter Your Email id"
@@ -54,7 +55,7 @@ export default function Login() {
           value={Password}
           onChange={(e) => setPassword(e.target.value)}
         required/>
-        <button type="submit">Sign up</button>
+        <button type="submit">{Signup}</button>
       </form>
       <p>Already have an Account.?? <Link to={'/'}>Login here</Link></p>
     </div>

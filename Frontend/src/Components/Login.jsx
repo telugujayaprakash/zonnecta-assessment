@@ -7,9 +7,12 @@ export default function Login() {
   const [Email, setEmail] = useState("");
   const [Password, setPassword] = useState("");
   const navigate = useNavigate();
+  const [Login, setLogin] = useState("Login");
 
-  async function Login(e) {
+  async function handleLogin(e) {
     e.preventDefault();
+    setLogin("Loading....")
+    
     try {
       await axios
         .post("http://localhost:5000/", { Email, Password })
@@ -31,7 +34,7 @@ export default function Login() {
 
   return (
     <div className="container">
-      <form onSubmit={Login}>
+      <form onSubmit={handleLogin}>
         <input
           type="email"
           placeholder="Enter Your Email id"
@@ -46,7 +49,7 @@ export default function Login() {
           onChange={(e) => setPassword(e.target.value)}
           required
         />
-        <button type="submit">Login</button>
+        <button type="submit">{Login}</button>
       </form>
       <p>
         Don't have an Account? <Link to={"/Signup"}>Signup here</Link>
